@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sun
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sun
+  template:
+    metadata:
+      labels:
+        app: sun
+    spec:
+      containers:
+      - image: okteto.dev/sun:latest
+        name: sun
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: ProxySite
+          value: "icook.tw"
+        - name: Vless_UUID
+          value: "3babf4ed-cde9-47ae-8921-70ced0c84f04"
+        - name: Vless_Path
+          value: "/ss255"
+        - name: Vmess_UUID
+          value: "3babf4ed-cde9-47ae-8921-70ced0c84f04"
+        - name: Vmess_Path
+          value: "/mm255"
+        - name: Share_Path
+          value: "/Share255"
